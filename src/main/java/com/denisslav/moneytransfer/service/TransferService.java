@@ -47,9 +47,9 @@ public class TransferService {
         Account accountTo = getAccount(to);
 
         synchronized (accountMap) {
-            // It seems that sync by separate accounts
+            // It seems that sync by separate accounts is slower
             //synchronized (from < to ? accountFrom : accountTo) {
-            //    synchronized (from < to ? accountTo : accountFrom) {
+            //synchronized (from < to ? accountTo : accountFrom) {
             if (accountFrom.getBalance().get().compareTo(amount) < 0) {
                 throw new NotEnoughBalanceException();
             }

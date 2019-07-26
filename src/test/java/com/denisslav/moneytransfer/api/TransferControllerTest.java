@@ -11,6 +11,8 @@ import com.despegar.http.client.PostMethod;
 import com.despegar.sparkjava.test.SparkServer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.math.BigDecimal;
+import java.util.List;
+import java.util.Map;
 import org.junit.ClassRule;
 import org.junit.Test;
 import spark.servlet.SparkApplication;
@@ -79,6 +81,9 @@ public class TransferControllerTest {
         post = testServer.post("/transfer", JsonUtil.convertFrom(transactionDto), false);
         httpResponse = testServer.execute(post);
         assertEquals(200, httpResponse.code());
+        List list = JsonUtil.convertToList(new String(httpResponse.body()));
+        assertEquals(5, ((Map)list.get(0)).get("balance"));
+        assertEquals(15, ((Map)list.get(1)).get("balance"));
 
         assertNotNull(testServer.getApplication());
     }
@@ -102,7 +107,7 @@ public class TransferControllerTest {
         post = testServer.post("/transfer", JsonUtil.convertFrom(transactionDto), false);
         httpResponse = testServer.execute(post);
         assertEquals(404, httpResponse.code());
-        //JsonUtil.convertToList()
+        assertEquals("Not enough money on account", new String(httpResponse.body()));
 
 
         assertNotNull(testServer.getApplication());
