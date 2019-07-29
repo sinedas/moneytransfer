@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'application'
     id 'jacoco'
+    id 'com.github.johnrengelman.shadow' version '5.1.0'
 }
 
 repositories {
@@ -18,9 +19,10 @@ dependencies {
     testImplementation 'com.despegar:spark-test:1.1.8'
 }
 
-group = 'com.denislav.moneytransfer'
+group = 'com.denisslav.moneytransfer'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = JavaVersion.VERSION_11
 
 mainClassName = 'com.denisslav.moneytransfer.MoneyTransferApp'
+
 

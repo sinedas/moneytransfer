@@ -21,6 +21,9 @@ public class TransferServiceTest {
     public static final int ACCOUNTS_SIZE2 = 200000;
     public static final int OPS_SIZE = 20;
 
+    /**
+     * Each transfers to each
+     */
     @Test
     public void test() throws Exception {
         ExecutorService executor = Executors.newFixedThreadPool(100);
@@ -55,7 +58,7 @@ public class TransferServiceTest {
     }
 
     /**
-     * 100.000 transfers to each account (total 20).
+     * 200.000 transfers to each account (total 20).
      */
     @Test
     public void test2() throws Exception {

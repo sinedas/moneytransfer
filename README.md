@@ -34,5 +34,12 @@ POST localhost:8080/transfer
 }
 ```
 
+## Run
+
+```
+gradlew build
+java -jar ./build/libs/moneytransfer-0.0.1-SNAPSHOT-all.jar
+```
+
 
 
